@@ -51,6 +51,48 @@ export default function Home() {
     }
   }, [currentImage]);
 
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    telemovel: "",
+    mensagem: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    // Update the formData state with the new input value
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // Convert form data to URLSearchParams
+    const formDataParams = new URLSearchParams(formData);
+
+    try {
+      // Append form data as query parameters to the URL
+      const url = `http://localhost:3030/teste?${formDataParams.toString()}`;
+
+      const response = await fetch(url, {
+        method: "GET",
+        // No need to set body when using GET method
+      });
+
+      if (!response.ok) {
+        throw new Error(`Invalid response: ${response.status}`);
+      }
+
+      alert("Thanks for contacting us, we will get back to you soon!");
+    } catch (err) {
+      console.error(err);
+      alert("We can't submit the form, try again later?");
+    }
+  }
+
   return (
     <main className={styles.main}>
       <div className={styles.nav}>
@@ -200,21 +242,48 @@ export default function Home() {
         <br></br>
         <br></br>
         <br></br>
-        <div className={styles.formStruct}>
+        <form className={styles.formStruct} onSubmit={handleSubmit}>
           <div className={styles.formStructDiv}>
             <div className={styles.inputs}>
-              <input placeholder="Nome"></input>
-              <br></br>
-              <input placeholder="Email"></input>
-              <br></br>
-              <input placeholder="Telemóvel"></input>
+              <input
+                type="text"
+                placeholder="Nome"
+                className={styles.inputWithoutBorder}
+                name="nome"
+                value={formData.nome}
+                onChange={handleInputChange}
+              />
+              <br />
+              <input
+                type="email"
+                placeholder="Email"
+                className={styles.inputWithoutBorder}
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+              <br />
+              <input
+                type="tel"
+                placeholder="Telemóvel"
+                className={styles.inputWithoutBorder}
+                name="telemovel"
+                value={formData.telemovel}
+                onChange={handleInputChange}
+              />
             </div>
             <textarea
               placeholder="Mensagem"
               className={styles.textArea}
-            ></textarea>
+              name="mensagem"
+              value={formData.mensagem}
+              onChange={handleInputChange}
+            />
           </div>
-        </div>
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
+        </form>
 
         <div className={styles.footer}>
           <div className={styles.zonasFooter}>

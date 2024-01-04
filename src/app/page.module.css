@@ -251,6 +251,8 @@
   font-size: 16px;
   font-family: "Jost";
   resize: none;
+  outline: none;
+  caret-color: #d09444;
 }
 
 .footer {
@@ -286,4 +288,9 @@
   color: #fff;
   font-family: "Jost";
   text-align: center;
+}
+
+.inputWithoutBorder {
+  outline: none;
+  caret-color: #d09444;
 }

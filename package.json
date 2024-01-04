@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.0.4"
+    "next": "14.0.4",
+    "nodemailer": "^6.9.8"
+  },
+  "devDependencies": {
+    "@types/node": "20.10.6",
+    "@types/react": "18.2.46",
+    "typescript": "5.3.3"
   }
 }
