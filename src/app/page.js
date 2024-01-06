@@ -280,6 +280,7 @@ export default function Home() {
               onChange={handleInputChange}
             />
           </div>
+          <br></br>
           <button type="submit" className={styles.submitButton}>
             Submit
           </button>

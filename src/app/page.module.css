@@ -294,3 +294,16 @@
   outline: none;
   caret-color: #d09444;
 }
+
+.submitButton {
+  background-color: #d09444;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: #fff;
+  font-family: "Inter";
+  letter-spacing: -0.8px;
+  font-size: 12px;
+  border: 0px;
+}
