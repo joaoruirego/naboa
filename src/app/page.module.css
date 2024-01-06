@@ -302,8 +302,21 @@
   padding-top: 12px;
   padding-bottom: 12px;
   color: #fff;
-  font-family: "Inter";
-  letter-spacing: -0.8px;
-  font-size: 12px;
+  font-family: "Jost";
+  letter-spacing: -0.3px;
+  font-size: 16px;
   border: 0px;
+  width: 250px;
+  align-self: center;
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  border-radius: 5px;
+}
+
+.submitButton:hover {
+  width: 260px;
+  opacity: 0.8;
 }

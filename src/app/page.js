@@ -22,8 +22,10 @@ const intervalTime = 2000;
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
+  const [currentImage2, setCurrentImage2] = useState(0);
   const [currentBgImage, setCurrentBgImage] = useState(0);
   const carouselRef = useRef(null);
+  const carouselRef2 = useRef(null);
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % images.length);
@@ -47,6 +49,12 @@ export default function Home() {
     if (carouselRef.current) {
       carouselRef.current.style.transform = `translateX(${
         -currentImage * 33.33
+      }%)`;
+    }
+
+    if (carouselRef2.current) {
+      carouselRef2.current.style.transform = `translateX(${
+        -currentImage2 * 33.33
       }%)`;
     }
   }, [currentImage]);
@@ -281,10 +289,11 @@ export default function Home() {
             />
           </div>
           <br></br>
-          <button type="submit" className={styles.submitButton}>
-            Submit
-          </button>
         </form>
+
+        <button type="submit" className={styles.submitButton}>
+          Submit
+        </button>
 
         <div className={styles.footer}>
           <div className={styles.zonasFooter}>
