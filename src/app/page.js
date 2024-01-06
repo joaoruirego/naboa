@@ -78,16 +78,13 @@ export default function Home() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // Convert form data to URLSearchParams
     const formDataParams = new URLSearchParams(formData);
 
     try {
-      // Append form data as query parameters to the URL
-      const url = `http://localhost:3030/teste?${formDataParams.toString()}`;
+      const url = `http://localhost:3030/naboa?${formDataParams.toString()}`;
 
       const response = await fetch(url, {
         method: "GET",
-        // No need to set body when using GET method
       });
 
       if (!response.ok) {
