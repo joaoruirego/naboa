@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Libre+Baskerville:wght@700&display=swap");
+
+.menuContainer {
+  color: #565046;
+  margin: 0;
+  padding: 20px;
+  font-family: "Jost", sans-serif;
+}
+
+.menuTitle {
+  text-align: center;
+  letter-spacing: -0.4px;
+  margin-bottom: 30px;
+}
+
+.menuSectionContainer {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens da seção se ajustem em telas menores */
+  gap: 15px;
+  justify-content: center;
+}
+
+.menuSection {
+  background-color: #565046;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  width: 100%; /* Preenche toda a largura em telas pequenas */
+  transition: all 0.4s ease-in-out;
+  box-sizing: border-box; /* Garante que padding não afete a largura total */
+}
+
+.menuSection:hover {
+  transform: rotateY(7deg);
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.sectionTitle {
+  color: #d09444;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.menuItems {
+  list-style: none;
+  padding: 0;
+}
+
+.menuItems li {
+  margin-bottom: 10px;
+  letter-spacing: -0.4px;
+  color: #fff;
+}
+
+.menuFooter {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 14px;
+}
+
+.submitButton {
+  background-color: #d09444;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: #fff;
+  font-family: "Jost";
+  letter-spacing: -0.3px;
+  font-size: 16px;
+  border: 0px;
+  width: 250px;
+  align-self: center;
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.submitButton:hover {
+  width: 260px;
+  opacity: 0.8;
+}
+
+.submitButton:hover {
+  opacity: 0.8;
+}
+
+/* Media Queries */
+@media (min-width: 1204px) {
+  .menuSection {
+    width: 22%; /* Largura original para telas maiores */
+  }
+
+  .submitButton {
+    background-color: #d09444;
+    padding: 12px 25px;
+    color: #fff;
+    font-family: "Jost";
+    letter-spacing: -0.3px;
+    font-size: 16px;
+    border: none;
+    width: 100%; /* Tamanho responsivo */
+    max-width: 250px; /* Largura máxima */
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    margin: 50px auto 0; /* Centraliza o botão */
+  }
+}

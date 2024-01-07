@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import React, { useState, useEffect, useRef } from "react";
-
+import Link from "next/link";
 const images = [
   "/a.jpg",
   "/b.jpg",
@@ -44,6 +44,36 @@ export default function Home() {
       clearInterval(bgIntervalId);
     };
   }, []);
+
+  const nextImage2 = () => {
+    setCurrentImage2((prev) => (prev + 1) % images.length);
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(nextImage, intervalTime);
+    const intervalId2 = setInterval(nextImage2, intervalTime); // Intervalo para carouselRef2
+
+    return () => {
+      clearInterval(intervalId);
+      clearInterval(intervalId2);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Atualiza o carouselRef
+    if (carouselRef.current) {
+      carouselRef.current.style.transform = `translateX(${
+        -currentImage * 100
+      }%)`;
+    }
+
+    // Atualiza o carouselRef2
+    if (carouselRef2.current) {
+      carouselRef2.current.style.transform = `translateX(${
+        -currentImage2 * 100
+      }%)`;
+    }
+  }, [currentImage, currentImage2]); // Dependência adicionada para currentImage2
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -98,14 +128,31 @@ export default function Home() {
     }
   }
 
+  const scrollToSection = (sectionId) => {
+    const section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles.nav}>
         <img className={styles.logo} src="/logo.png" />
         <ul className={styles.navUl}>
-          <li className={styles.navLi}>Home</li>
-          <li className={styles.navLi}>Localização</li>
-          <li className={styles.navLiE}>Encomendas</li>
+          {/* <li className={styles.navLi}>Home</li> */}
+          <li
+            onClick={() => scrollToSection("#localizacao")}
+            className={styles.navLi}
+          >
+            Localização
+          </li>
+          <li
+            onClick={() => scrollToSection("#encomendas")}
+            className={styles.navLiE}
+          >
+            Encomendas
+          </li>
         </ul>
       </div>
       <div className={styles.titleZone}>
@@ -134,12 +181,9 @@ export default function Home() {
         <br></br>
         <div>
           <p className={styles.desc}>
-            Aqui vai ficar o texto número 1 sobre o Naboa Texto sobre o conceito
-            da mercearia Lorem ipsum dolor sit amet,<br></br> consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.<br></br> Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            Bem-vindo à NABOA, o refúgio de tapas e vinhos em Telheiras, Lisboa.
+            Descubra o charme vintage enquanto desfruta de petiscos autênticos e
+            uma vasta seleção de vinhos na nossa garrafeira única.
           </p>
         </div>
         <br></br>
@@ -147,7 +191,7 @@ export default function Home() {
       </div>
 
       <div className={styles.carouselContainer}>
-        <div ref={carouselRef} className={styles.carousel}>
+        <div ref={carouselRef2} className={styles.carousel}>
           {images.map((imageUrl, index) => (
             <img
               key={index}
@@ -185,14 +229,18 @@ export default function Home() {
         <br></br>
         <div>
           <p className={styles.desc}>
-            Pequeno texto sobre a carta Lorem ipsum dolor sit amet,<br></br>{" "}
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
+            Explore a nossa carta de petiscos na NABOA, onde cada prato é uma
+            deliciosa viagem pelos sabores autênticos,<br></br> cuidadosamente
+            selecionados para tornar a sua experiência única e memorável.
           </p>
         </div>
         <div className={styles.buttons}>
-          <button className={styles.buttonMenu}>Menu</button>
-          <button className={styles.buttonVinhos}>Vinhos</button>
+          <a href="/carta/">
+            <button className={styles.buttonMenu}>Menu</button>
+          </a>
+          <a href="/carta/">
+            <button className={styles.buttonVinhos}>Vinhos</button>
+          </a>
         </div>
         <br></br>
         <br></br>
@@ -227,26 +275,24 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <div id="encomendas"></div>
       <br></br>
 
       <div className={styles.sobreContainer}>
         <br></br>
-        <h2 style={{ fontSize: 75 }} className={styles.segTitle}>
+        <h2 style={{ fontSize: "350%" }} className={styles.segTitle}>
           Encomendas
         </h2>
         <br></br>
         <div>
           <br></br>
           <p className={styles.desc}>
-            Pequeno texto sobre as encomendas Lorem ipsum dolor sit amet,
-            <br></br> consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
+            Leve a NABOA até si! Encomende bolos, vinhos e refeições incríveis,
+            <br></br>
+            desfrutando do nosso toque especial em cada entrega.
           </p>
         </div>
 
-        <br></br>
-        <br></br>
-        <br></br>
         <form className={styles.formStruct} onSubmit={handleSubmit}>
           <div className={styles.formStructDiv}>
             <div className={styles.inputs}>
@@ -277,6 +323,7 @@ export default function Home() {
                 onChange={handleInputChange}
               />
             </div>
+
             <textarea
               placeholder="Mensagem"
               className={styles.textArea}
@@ -285,29 +332,57 @@ export default function Home() {
               onChange={handleInputChange}
             />
           </div>
+          <p className={styles.desc}>
+            Envie-nos uma mensagem para fazer uma reserva ou encomenda!<br></br>
+            desfrutando do nosso toque especial em cada entrega.
+          </p>
+          <button
+            id="localizacao"
+            type="submit"
+            className={styles.submitButton}
+          >
+            Submeter
+          </button>
           <br></br>
         </form>
-
-        <button type="submit" className={styles.submitButton}>
-          Submit
-        </button>
+        <h2
+          style={{ fontSize: "320%", marginTop: 50 }}
+          className={styles.segTitle}
+        >
+          Localização
+        </h2>
+        <br></br>
+        <div className={styles.mapaDiv}>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.0959530047753!2d-9.168765923525415!3d38.76150317175341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1932e7bdc20dd1%3A0xb509920c7fbcb494!2sRua%20Professor%20Fernando%20da%20Fonseca%2025%2C%201600-617%20Lisboa!5e0!3m2!1spt-PT!2spt!4v1704566702075!5m2!1spt-PT!2spt"
+            allowfullscreen=""
+            className={styles.mapa}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
 
         <div className={styles.footer}>
           <div className={styles.zonasFooter}>
-            <div style={{ width: "33.3%" }}>
+            <div className={styles.zonaFooter}>
               <h3 className={styles.titleForm}>Onde estamos</h3>
               <p className={styles.descForm}>
                 Rua Professor Fernando da Fonseca 25A <br></br>1600-617 Lisboa
               </p>
             </div>
-            <div style={{ width: "33.3%" }}>
+            <br></br>
+            <br></br>
+            <div className={styles.zonaFooter}>
               <h3 className={styles.titleForm}>Contactos</h3>
               <p className={styles.descForm}>
                 +351 964 217 459
                 <br></br>info@mercadonaboa.pt
               </p>
             </div>
-            <div style={{ width: "33.3%" }}>
+            <br></br>
+            <br></br>
+
+            <div className={styles.zonaFooter}>
               <h3 className={styles.titleForm}>Redes Sociais</h3>
               <p className={styles.descForm}>
                 Instagram
@@ -315,6 +390,9 @@ export default function Home() {
               </p>
             </div>
           </div>
+          <br></br>
+          <br></br>
+          <br></br>
           <br></br>
           <div className={styles.logoFooterImg}>
             <img className={styles.logoFooter} src="/logo.png" />

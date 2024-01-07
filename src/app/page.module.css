@@ -209,14 +209,20 @@
 }
 
 .formStruct {
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
+  background-color: #403c3c;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .formStructDiv {
   display: flex;
+  padding-top: 25px;
+  padding-bottom: 25px;
   align-items: center;
+  justify-content: center;
   gap: 25px;
 }
 
@@ -256,12 +262,19 @@
 }
 
 .footer {
-  margin: 200px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 50px;
+  margin-top: 100px;
 }
 
 .zonasFooter {
   display: flex;
   justify-content: space-between;
+}
+
+.zonaFooter {
+  width: 33.3%;
 }
 
 .logoFooterImg {
@@ -275,6 +288,7 @@
   align-self: center;
   width: 150px;
   height: 150px;
+  margin-top: 50px;
 }
 
 .titleForm {
@@ -320,3 +334,143 @@
   width: 260px;
   opacity: 0.8;
 }
+
+.mapaDiv {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.mapa {
+  margin: auto;
+  display: block;
+  width: 450px;
+  height: 320px;
+  border-radius: 5px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Estilos base já definidos acima... */
+
+/* Media Queries para telas menores */
+@media (max-width: 925px) {
+  .nav {
+    flex-direction: row;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .navUl {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .desc {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: "Jost";
+    font-size: 15px;
+    margin-left: 55px;
+    margin-right: 55px;
+  }
+  .segTitle,
+  .sobreTitle,
+  .sobreTitleTitle,
+  .title {
+    font-size: reduza o tamanho para melhor ajuste;
+  }
+
+  .titleZone {
+    margin-top: 45%;
+  }
+
+  .carouselImage {
+    flex: 0 0 50%; /* Ajuste a percentagem para melhores dimensões */
+  }
+
+  .buttons,
+  .formStructDiv {
+    flex-direction: column;
+  }
+
+  .mapa {
+    width: 100%; /* Torna o mapa mais largo em telas menores */
+    height: auto;
+  }
+
+  .footer {
+    margin-left: 20px;
+    margin-right: 20px;
+    align-self: center;
+    justify-content: center;
+  }
+
+  .zonasFooter {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 625px) {
+  .titleZone {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    margin-top: 55%;
+    font-family: "Jost";
+    text-align: center;
+  }
+
+  .sobreTitleTitle {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .title {
+    font-size: 600%;
+    color: #fff;
+    letter-spacing: -1.8px;
+    margin-top: -25px;
+    text-shadow: 0px 0px 75px #403c3c;
+    mix-blend-mode: difference;
+  }
+
+  .segTitle {
+    font-size: 85px;
+    font-weight: 800;
+    margin-top: -25px;
+    font-family: "Jost";
+    align-self: center;
+    text-align: center;
+  }
+
+  .desc {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: "Jost";
+    font-size: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+  .mapa {
+    margin: auto;
+    display: block;
+    width: 370px;
+    height: 280px;
+    border-radius: 5px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+  }
+
+  .zonasFooter {
+    display: block;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .zonaFooter {
+    width: 100%;
+  }
+}
+
+/* Pode adicionar mais media queries para diferentes tamanhos de tela, como tablets ou telas muito grandes */
