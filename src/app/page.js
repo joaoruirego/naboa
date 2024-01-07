@@ -355,10 +355,10 @@ export default function Home() {
         <div className={styles.mapaDiv}>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.0959530047753!2d-9.168765923525415!3d38.76150317175341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1932e7bdc20dd1%3A0xb509920c7fbcb494!2sRua%20Professor%20Fernando%20da%20Fonseca%2025%2C%201600-617%20Lisboa!5e0!3m2!1spt-PT!2spt!4v1704566702075!5m2!1spt-PT!2spt"
-            allowfullscreen=""
+            allowFullScreen=""
             className={styles.mapa}
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
 
