@@ -111,7 +111,7 @@ export default function Home() {
     const formDataParams = new URLSearchParams(formData);
 
     try {
-      const url = `http://localhost:3030/naboa?${formDataParams.toString()}`;
+      const url = `https://step-server-5p5n.onrender.com/naboa?${formDataParams.toString()}`;
 
       const response = await fetch(url, {
         method: "GET",
@@ -385,8 +385,21 @@ export default function Home() {
             <div className={styles.zonaFooter}>
               <h3 className={styles.titleForm}>Redes Sociais</h3>
               <p className={styles.descForm}>
-                Instagram
-                <br></br>Facebook
+                <a
+                  href="https://www.instagram.com/imagino_naboa/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Instagram
+                </a>
+                <br />
+                <a
+                  href="https://www.facebook.com/naboamercearia/?locale=pt_PT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
               </p>
             </div>
           </div>
