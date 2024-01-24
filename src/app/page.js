@@ -238,7 +238,7 @@ export default function Home() {
           <a href="/carta/">
             <button className={styles.buttonMenu}>Menu</button>
           </a>
-          <a href="/carta/">
+          <a href="/vinhos/">
             <button className={styles.buttonVinhos}>Vinhos</button>
           </a>
         </div>
