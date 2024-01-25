@@ -238,7 +238,7 @@ export default function Home() {
           <a href="/carta/">
             <button className={styles.buttonMenu}>Menu</button>
           </a>
-          <a href="/carta/">
+          <a href="/vinhos/">
             <button className={styles.buttonVinhos}>Vinhos</button>
           </a>
         </div>
@@ -287,9 +287,7 @@ export default function Home() {
         <div>
           <br></br>
           <p className={styles.desc}>
-            Leve a NABOA até si! Encomende bolos, vinhos e refeições incríveis,
-            <br></br>
-            desfrutando do nosso toque especial em cada entrega.
+            Leve a NABOA até si! Encomende bolos, vinhos e refeições incríveis!
           </p>
         </div>
 
@@ -333,8 +331,7 @@ export default function Home() {
             />
           </div>
           <p className={styles.desc}>
-            Envie-nos uma mensagem para fazer uma reserva ou encomenda!<br></br>
-            desfrutando do nosso toque especial em cada entrega.
+            Envie-nos uma mensagem para fazer uma reserva!<br></br>
           </p>
           <button
             id="localizacao"
